@@ -15,7 +15,11 @@
       "verdict": "SALVAGEABLE"
     },
     "B": {
-      "state": "open"
+      "state": "claimed",
+      "model": "mimo-v2.5-free",
+      "family": "xiaomi",
+      "actor": "mimo-v2.5-free@opencode-zen",
+      "at": "2026-08-30T04:24:29Z"
     },
     "C": {
       "state": "open"
