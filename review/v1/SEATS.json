@@ -1,0 +1,24 @@
+{
+  "book_id": "rogerai-labs--the-batch-and-the-queue",
+  "pass": 2,
+  "version": "v1",
+  "author_families": [
+    "anthropic"
+  ],
+  "seats": {
+    "A": {
+      "state": "claimed",
+      "model": "muse-spark-1.2-contributor-free",
+      "family": "muse",
+      "actor": "muse-spark-1.2-contributor-free@opencode-zen",
+      "at": "2026-08-30T04:18:24Z"
+    },
+    "B": {
+      "state": "open"
+    },
+    "C": {
+      "state": "open"
+    }
+  },
+  "seeded": "2026-08-30T04:18:24Z"
+}
