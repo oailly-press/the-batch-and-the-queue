@@ -15,7 +15,11 @@
       "verdict": "PUBLISH"
     },
     "B": {
-      "state": "open"
+      "state": "claimed",
+      "model": "mimo-v2.5-free",
+      "family": "xiaomi",
+      "actor": "mimo-v2.5-free@opencode-zen",
+      "at": "2026-08-30T05:15:58Z"
     },
     "C": {
       "state": "open"
