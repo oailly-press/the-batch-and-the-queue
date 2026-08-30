@@ -86,10 +86,12 @@ def expected_speedup(n_max, accept):
     # a spilled expert read dominates, so cost ~ (1 + k*n_max) relative units.
     k = 0.55                  # per-extra-token spill surcharge (fit to this box)
     cost = 1.0 + k * n_max
-    # tokens produced per verify step = 1 (the free token) + accepted drafts
+    # tokens produced per verify step = 1 (the free token) + accepted drafts.
+    # accept is the per-position rate; it falls fast past the first draft because
+    # the drafter (a single MTP head) is trained only on the immediate next token.
     yielded = 1.0 + sum(accept ** i for i in range(1, n_max + 1))
     return yielded / cost
-for n_max, acc in ((1, 1.00), (2, 0.89), (3, 0.78)):
+for n_max, acc in ((1, 1.00), (2, 0.70), (3, 0.55)):
     s = expected_speedup(n_max, acc)
     print(f"n_max={n_max}  accept={acc:.2f}  ->  {s:.2f}x  "
           f"({BASE_TPS*s:.1f} tok/s modeled)")
@@ -98,17 +100,27 @@ print("sweet spot on this spill: n_max = 1 (first-token drafts accept ~100%)")
 
 ```output
 n_max=1  accept=1.00  ->  1.29x  (28.6 tok/s modeled)
-n_max=2  accept=0.89  ->  1.28x  (28.4 tok/s modeled)
-n_max=3  accept=0.78  ->  1.08x  (24.0 tok/s modeled)
+n_max=2  accept=0.70  ->  1.04x  (23.2 tok/s modeled)
+n_max=3  accept=0.55  ->  0.76x  (16.9 tok/s modeled)
 ```
 
-The model says guess exactly one token ahead, and the bench agreed. Measured on the
-real server, speculating a single token gave a clean speedup with the drafted token
-accepted essentially all the time — the first guessed token is the one the drafting
-mechanism is trained to get right, so it lands at nearly a hundred percent — while
-guessing two or three tokens ahead dropped both the acceptance rate and the net speed,
-because the extra verification reads over the slow bus cost more than the occasionally
-accepted extra tokens returned. The measured speedups tracked the amount of spill:
+The model says guess exactly one token ahead, and it says so with room to spare:
+drafting a single token returns a clean 1.29 times speedup, drafting two collapses
+that to a marginal 1.04 times, and drafting three turns the technique against itself,
+landing at 0.76 times — slower than not speculating at all. The gap is driven by the
+acceptance rate, and the acceptance rate falls fast once you draft past the first
+token, because the drafter here is a single multi-token-prediction head trained on the
+immediate next token: it lands that first guess at nearly a hundred percent, but its
+second and third guesses are extrapolations it was never optimized for, so they miss
+more often even as each one adds another full slow-tier verification read. Drafting
+more thus pays a rising cost against a falling return, and past n_max = 1 on this spill
+the cost wins. The parameters are a fit to this box, not a measurement: the surcharge
+k was chosen so the n_max = 1 speedup matches the roughly 1.30 times the bench recorded
+at ten layers spilled, and the acceptance rates reflect the observed collapse past the
+first draft rather than any single logged cell. The bench agreed with the shape:
+speculating a single token gave a clean speedup with the drafted token accepted
+essentially all the time, while guessing two or three ahead dropped both the acceptance
+rate and the net speed. The measured speedups tracked the amount of spill:
 about 1.18 times faster with fourteen layers spilled, about 1.30 times with ten
 spilled, and, on a small model with no spill at all, past 2 times — the same law, that
 the payoff grows as the slow tier shrinks. The practical rule for anyone running a

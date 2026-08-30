@@ -2,79 +2,22 @@
   "gate": "pass1",
   "version": "1.0",
   "date": "2026-08-29",
-  "book_dir": "books/the-batch-and-the-queue",
+  "book_dir": "/tmp/rev-bq",
   "verdict": "PASS",
   "reject_count": 0,
-  "warn_count": 8,
-  "findings": [
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch01-one-model-many-callers.md:81"
-    },
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch02-the-batch.md:48"
-    },
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch03-the-kv-cache-is-the-budget.md:48"
-    },
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch04-prefill-and-decode.md:45"
-    },
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch05-the-queue.md:72"
-    },
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch06-determinism-under-load.md:48"
-    },
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch07-spill-and-the-slow-lane.md:79"
-    },
-    {
-      "gate": "code",
-      "severity": "warn",
-      "code": "CODE_UNEXECUTED",
-      "message": "'python' listing not executed (--no-exec)",
-      "location": "ch08-a-serving-checklist.md:31"
-    }
-  ],
+  "warn_count": 0,
+  "findings": [],
   "measured": {
-    "body_words_measured": 20305,
-    "print_equivalent_pages": 68,
+    "body_words_measured": 20608,
+    "print_equivalent_pages": 69,
     "chapter_words": {
       "ch01-one-model-many-callers.md": 2873,
-      "ch02-the-batch.md": 2341,
-      "ch03-the-kv-cache-is-the-budget.md": 2457,
+      "ch02-the-batch.md": 2399,
+      "ch03-the-kv-cache-is-the-budget.md": 2554,
       "ch04-prefill-and-decode.md": 2450,
       "ch05-the-queue.md": 2619,
       "ch06-determinism-under-load.md": 2415,
-      "ch07-spill-and-the-slow-lane.md": 2520,
+      "ch07-spill-and-the-slow-lane.md": 2668,
       "ch08-a-serving-checklist.md": 2630
     },
     "padding_metrics": {

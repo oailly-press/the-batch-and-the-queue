@@ -150,13 +150,17 @@ callers, aggregate throughput reached about 46 tokens per second — the shared 
 read paying off, but well short of the 4× that a perfectly free batch would give,
 because this particular model spills part of its weights to system memory and the
 slow tier caps how much the batch can amortize. That ceiling is real and it is the
-subject of Chapter 7. For contrast, a smaller dense model that fits entirely in
-fast memory, served under a system built for high concurrency, scaled far more
-steeply: on the same class of box, a reference run of a 120-billion-parameter
-mixture model under vLLM produced about 60 tokens per second single-stream and
-climbed past 480 at eight concurrent callers and into the high hundreds at sixteen
-[R22]. Same idea, very different curve — because one server was memory-bound on a
-spilled model and the other was not. The lesson is not that one number is right. It
+subject of Chapter 7. For contrast, a smaller model that fits entirely in fast
+memory scales far more steeply. As a cross-check on the same bench, I served a
+120-billion-parameter mixture model — small enough to sit resident in video memory,
+with nothing spilled — under vLLM, and measured it single-stream and under load:
+about 60 tokens per second single-stream, climbing past 480 at eight concurrent
+callers and into the high hundreds at sixteen. Those are my own measurements on the
+workstation described in Chapter 1, not a published benchmark; I report them the same
+way I report the spilled model's numbers above — with the apparatus stated, so anyone
+with a resident 120B-class mixture model under vLLM on comparable hardware can
+reproduce the shape of the curve. Same idea, very different curve — because one server
+was memory-bound on a spilled model and the other was not. The lesson is not that one number is right. It
 is that the batch's payoff is bounded by whichever resource runs out first, and you
 cannot know the shape of your own curve without measuring it on your own load.
 

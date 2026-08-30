@@ -11,8 +11,8 @@
     "isbn": null
   },
   "structure": {
-    "word_count_body": 20305,
-    "print_equivalent_pages": 68,
+    "word_count_body": 20608,
+    "print_equivalent_pages": 69,
     "chapters": [
       {
         "number": 1,
@@ -26,7 +26,7 @@
       {
         "number": 2,
         "title": "The Batch",
-        "words": 2341,
+        "words": 2399,
         "source_file": "ch02-the-batch.md",
         "written_by": [
           { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
@@ -35,7 +35,7 @@
       {
         "number": 3,
         "title": "The KV Cache Is the Budget",
-        "words": 2457,
+        "words": 2554,
         "source_file": "ch03-the-kv-cache-is-the-budget.md",
         "written_by": [
           { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
@@ -71,7 +71,7 @@
       {
         "number": 7,
         "title": "Spill and the Slow Lane",
-        "words": 2520,
+        "words": 2668,
         "source_file": "ch07-spill-and-the-slow-lane.md",
         "written_by": [
           { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }

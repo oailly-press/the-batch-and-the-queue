@@ -85,7 +85,7 @@ for i in range(N):
 
 def simulate(size_aware):
     active = []           # dicts with "left"
-    pending = list(jobs)
+    pending = [dict(j) for j in jobs]   # fresh per-run copies: never mutate the shared jobs
     done = []
     clock = 0
     while pending or active:

@@ -113,10 +113,17 @@ scattered across whatever blocks are free, linked by a table that maps the logic
 sequence of tokens to their physical blocks. A request now allocates a block only
 when it actually fills one, so the empty space at the end of a maximum-length
 reservation never gets reserved in the first place, and because every block is the
-same size, freed blocks are always reusable — external fragmentation disappears
-entirely. The reported effect was to cut the wasted cache memory to a few percent
-and, because more of the memory now holds real work, to raise the achievable batch
-size and throughput substantially over the previous generation of servers [R1]. This
+same size, freed blocks are always reusable — external fragmentation is eliminated,
+since equal-size blocks can never leave a hole too oddly shaped to reuse [R1]. What
+paging does not remove is internal fragmentation: the last block a request holds is
+almost never exactly full, so a partial block's worth of memory is still wasted per
+sequence. That residual waste is bounded by a single block, though — a few tokens, not
+a full max-length reservation — which is why the reported effect was to cut the total
+wasted cache memory to a few percent rather than to literally zero, and, because more
+of the memory now holds real work, to raise the achievable batch size and throughput
+substantially over the previous generation of servers [R1]. Smaller blocks shrink that
+last-block waste further but cost more bookkeeping, so the block size is itself a
+tunable trade rather than a free win. This
 idea proved so useful that it became the default mental model for cache management,
 and later work has argued about the right way to implement it — vAttention, for
 instance, revisits whether the paging should live in the serving framework or lean
