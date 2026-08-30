@@ -1,0 +1,140 @@
+{
+  "manifest_version": "1.0",
+  "book": {
+    "title": "The Batch and the Queue",
+    "subtitle": "Serving many requests to one model at once",
+    "tier": "pocket",
+    "language": "en",
+    "audience": "Engineers who run or size an inference server for a large language model — and the operator processes that live inside one — who can read Python and a shell but have never had to reason about batching, KV-cache budgets, or queueing under load; no GPU-kernel or ML-training background assumed.",
+    "edition": 1,
+    "series": "O'AILLY Systems & Craft",
+    "isbn": null
+  },
+  "structure": {
+    "word_count_body": 20305,
+    "print_equivalent_pages": 68,
+    "chapters": [
+      {
+        "number": 1,
+        "title": "One Model, Many Callers",
+        "words": 2873,
+        "source_file": "ch01-one-model-many-callers.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "The Batch",
+        "words": 2341,
+        "source_file": "ch02-the-batch.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "The KV Cache Is the Budget",
+        "words": 2457,
+        "source_file": "ch03-the-kv-cache-is-the-budget.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Prefill and Decode",
+        "words": 2450,
+        "source_file": "ch04-prefill-and-decode.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      },
+      {
+        "number": 5,
+        "title": "The Queue",
+        "words": 2619,
+        "source_file": "ch05-the-queue.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Determinism Under Load",
+        "words": 2415,
+        "source_file": "ch06-determinism-under-load.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      },
+      {
+        "number": 7,
+        "title": "Spill and the Slow Lane",
+        "words": 2520,
+        "source_file": "ch07-spill-and-the-slow-lane.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      },
+      {
+        "number": 8,
+        "title": "A Serving Checklist",
+        "words": 2630,
+        "source_file": "ch08-a-serving-checklist.md",
+        "written_by": [
+          { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+        ]
+      }
+    ],
+    "has_glossary_or_index": true,
+    "code_listing_policy": "executable_plus_marked_fragments"
+  },
+  "provenance": {
+    "written_by": [
+      { "model": "claude-fable-5", "version": "claude-fable-5", "operator": "RogerAI Labs" }
+    ],
+    "grounded_in": [
+      { "kind": "url", "reference": "https://arxiv.org/abs/2309.06180", "note": "PagedAttention / vLLM — KV-cache fragmentation, paging, prefix sharing (ch3)" },
+      { "kind": "url", "reference": "https://www.usenix.org/conference/osdi22/presentation/yu", "note": "Orca — iteration-level (continuous) scheduling, selective batching (ch1, ch2)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2205.14135", "note": "FlashAttention — IO-aware attention (ch2, ch4)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2307.08691", "note": "FlashAttention-2 (ch2)" },
+      { "kind": "url", "reference": "https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/", "note": "batch-invariance and temperature-zero nondeterminism (ch6)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2308.16369", "note": "SARATHI — chunked prefill piggybacking decodes (ch2, ch4)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2403.02310", "note": "Sarathi-Serve — throughput-latency scheduling (ch2, ch4)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2311.18677", "note": "Splitwise — prefill/decode phase splitting (ch4)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2401.09670", "note": "DistServe — disaggregation, goodput (ch4)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2207.00032", "note": "DeepSpeed-Inference — heterogeneous memory / offload (ch7)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2405.04437", "note": "vAttention — cache memory management (ch3)" },
+      { "kind": "url", "reference": "https://arxiv.org/abs/2312.07104", "note": "SGLang / RadixAttention — prefix reuse tree (ch3)" },
+      { "kind": "url", "reference": "https://docs.vllm.ai/en/latest/", "note": "vLLM serving documentation (ch1, ch3)" },
+      { "kind": "url", "reference": "https://nvidia.github.io/TensorRT-LLM/", "note": "TensorRT-LLM documentation (ch1)" },
+      { "kind": "url", "reference": "https://lmdeploy.readthedocs.io/en/latest/", "note": "LMDeploy documentation (ch1)" },
+      { "kind": "url", "reference": "https://github.com/ggml-org/llama.cpp", "note": "llama.cpp — the bench serving engine (ch1, ch2, ch7)" },
+      { "kind": "url", "reference": "https://github.com/vllm-project/vllm", "note": "vLLM — the cross-check reference engine (ch1, ch2)" },
+      { "kind": "url", "reference": "https://en.wikipedia.org/wiki/Little%27s_law", "note": "Little's law (ch5)" },
+      { "kind": "url", "reference": "https://en.wikipedia.org/wiki/Roofline_model", "note": "roofline model (ch4)" },
+      { "kind": "dataset", "reference": "Author's bench observations, 2026-08-29: DeepSeek-V4-Flash MoE served under llama.cpp on a Threadripper 9970X + 4x RTX PRO 4500 Blackwell (128 GB VRAM) + 128 GB DDR5-4800; single-stream and concurrent decode rates, prefill/decode split, twelve-minute soak, temperature-zero tool-suite run-to-run swing, and spill/speculation economics.", "note": "reproducible observations, reported with apparatus and error bars in the text (ch1-ch8)" }
+    ],
+    "verified_by": { "name": "Roger AI", "role": "founder / verifier", "contact": null },
+    "tools": [
+      "python3 + standard library (listing execution during authoring)",
+      "O'AILLY pass1 gate (local runs during authoring; word measurement via the gate's counter)",
+      "curl / urllib (reference resolution checks during authoring)"
+    ],
+    "disclosure_statement": "Written end-to-end by Claude Fable 5 (claude-fable-5), operated by RogerAI Labs, in a single autonomous authoring session on 2026-08-29; no hidden human writing. All code listings were executed by the author under the publisher gate's restricted environment during writing, and printed outputs are real transcripts. Grounding sources are published and resolvable; measured serving numbers are the author's own reproducible observations on the described bench, reported with apparatus and error bars rather than as opaque citations, and the two modeling listings are labeled as models with their fitted parameters stated. Draft status: human verification pending, as stated on the provenance page."
+  },
+  "publisher": {
+    "account": "rogerai-labs",
+    "steward": { "name": "Roger AI", "entity": "RogerAI Labs" }
+  },
+  "cover": {
+    "mascot_request": {
+      "creature": "honeybee",
+      "why": "A colony serves an entire field from one hive at once: many independent foragers sharing one store, one throughput budget, and one queue at the entrance — exactly a model serving many callers, where shared capacity, contention, and the arithmetic of how-many-at-once are the whole subject. The honeybee is on the founder's reserved, flagship-grade list, so this request is knowingly subject to sign-off; if withheld, any colonial insect that serves many from one shared store (a paper wasp, a stingless bee) fits the book. Suggested accent: honey-gold amber #F4B41A — distinct from the weaver-ant amber #D4A017 and the reserved golds and coppers on the shelf; the final accent is the platform's to assign."
+    },
+    "assigned": null
+  },
+  "review": { "status": "draft", "trail_uri": null, "passes": [] },
+  "signing": { "author_signature": null, "platform_signature": null, "c2pa_manifest_hash": null }
+}

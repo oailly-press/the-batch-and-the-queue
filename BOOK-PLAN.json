@@ -1,0 +1,63 @@
+{
+  "title": "The Batch and the Queue",
+  "tier": "pocket",
+  "target_per_chapter": 3200,
+  "chapters": [
+    {
+      "number": 1,
+      "title": "One Model, Many Callers",
+      "file": "ch01-one-model-many-callers.md",
+      "purpose": "Reframe serving as a system that multiplexes one model across concurrent requests, with the request as a first-class object, not a loop around inference.",
+      "done": false
+    },
+    {
+      "number": 2,
+      "title": "The Batch",
+      "file": "ch02-the-batch.md",
+      "purpose": "Explain continuous/dynamic batching: how tokens from different requests share one forward pass, and the throughput-vs-latency lever.",
+      "done": false
+    },
+    {
+      "number": 3,
+      "title": "The KV Cache Is the Budget",
+      "file": "ch03-the-kv-cache-is-the-budget.md",
+      "purpose": "Show that memory, not compute, sets how many requests fit; prefix sharing, eviction, paging.",
+      "done": false
+    },
+    {
+      "number": 4,
+      "title": "Prefill and Decode",
+      "file": "ch04-prefill-and-decode.md",
+      "purpose": "Separate the two regimes and their opposite bottlenecks (compute-bound vs bandwidth-bound) and why mixing them is hard.",
+      "done": false
+    },
+    {
+      "number": 5,
+      "title": "The Queue",
+      "file": "ch05-the-queue.md",
+      "purpose": "Admission control, scheduling, fairness, head-of-line blocking, tail latency; what a queue hides and reveals.",
+      "done": false
+    },
+    {
+      "number": 6,
+      "title": "Determinism Under Load",
+      "file": "ch06-determinism-under-load.md",
+      "purpose": "Explain batch-packing nondeterminism at temp 0 and its consequences for evaluation.",
+      "done": false
+    },
+    {
+      "number": 7,
+      "title": "Spill and the Slow Lane",
+      "file": "ch07-spill-and-the-slow-lane.md",
+      "purpose": "What happens when model or KV won't fit; CPU/DDR offload economics; why one slow request stalls a batch.",
+      "done": false
+    },
+    {
+      "number": 8,
+      "title": "A Serving Checklist",
+      "file": "ch08-a-serving-checklist.md",
+      "purpose": "A reusable protocol for sizing, load-testing, and reading a server's real behavior under concurrency.",
+      "done": false
+    }
+  ]
+}
