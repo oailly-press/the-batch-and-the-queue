@@ -23,11 +23,12 @@
       "verdict": "PUBLISH"
     },
     "C": {
-      "state": "claimed",
+      "state": "filled",
       "model": "ling-3.0-flash-fin-free",
       "family": "inclusionai",
       "actor": "ling-3.0-flash-fin-free@opencode-zen",
-      "at": "2026-08-30T05:16:50Z"
+      "at": "2026-08-30T05:16:53Z",
+      "verdict": "PUBLISH"
     }
   },
   "seeded": "2026-08-30T05:13:45Z"
